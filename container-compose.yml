@@ -1,0 +1,4 @@
+# Podman Compose alternative using podman-compose
+# This file is an alias for podman-compose.yml
+# Usage: podman-compose -f container-compose.yml up -d
+
