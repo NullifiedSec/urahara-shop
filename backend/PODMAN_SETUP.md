@@ -28,6 +28,11 @@ sudo dnf install podman podman-compose
 
 ### 1. Start the Database Containers
 
+Navigate to the backend directory:
+```bash
+cd backend
+```
+
 Using `podman-compose` (recommended):
 ```bash
 podman-compose up -d
@@ -50,12 +55,15 @@ You should see:
 
 ### 3. Configure Backend Environment
 
-Copy the example environment file:
+Copy the example environment file (if it exists) or create `.env`:
 ```bash
-cp .env.podman.example backend/.env
+# If .env.podman.example exists
+cp .env.podman.example .env
+
+# Or create .env manually
 ```
 
-Update the database credentials in `backend/.env`:
+Update the database credentials in `.env`:
 ```env
 DB_CONNECTION=pgsql
 DB_HOST=127.0.0.1
@@ -68,7 +76,6 @@ DB_PASSWORD=uraharashop123
 ### 4. Run Migrations
 
 ```bash
-cd backend
 php artisan migrate
 ```
 
@@ -130,7 +137,7 @@ The default configuration uses PostgreSQL. No changes needed.
 
 1. Comment out the PostgreSQL service in `podman-compose.yml`
 2. Uncomment the MySQL service
-3. Update `backend/.env`:
+3. Update `.env`:
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -239,6 +246,7 @@ podman system migrate
 You can override default values by setting environment variables:
 
 ```bash
+cd backend
 DB_DATABASE=myapp \
 DB_USERNAME=myuser \
 DB_PASSWORD=mypassword \
@@ -246,7 +254,7 @@ DB_PORT=5433 \
 podman-compose up -d
 ```
 
-Or create a `.env` file in the project root:
+Or create a `.env` file in the backend directory:
 ```env
 DB_DATABASE=uraharashop
 DB_USERNAME=uraharashop
