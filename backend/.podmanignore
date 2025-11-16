@@ -1,0 +1,12 @@
+# Podman ignore file
+# Similar to .gitignore but for Podman operations
+
+node_modules/
+vendor/
+.git/
+.env
+.env.local
+*.log
+storage/
+bootstrap/cache/
+
